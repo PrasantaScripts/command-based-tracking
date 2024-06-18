@@ -5,7 +5,13 @@ const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://command-based-tracking.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 mongoose.connect(
   "mongodb+srv://0000:0000@cluster0.svuj0yt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",

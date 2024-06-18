@@ -72,7 +72,9 @@ const App = () => {
 
   const fetchActivities = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/activities");
+      const response = await axios.get(
+        "https://command-based-tracking.vercel.app/activities"
+      );
       setActivities(response.data);
 
       console.log("Fetched activities:", response.data);
@@ -84,9 +86,12 @@ const App = () => {
 
   const startActivity = async (activity) => {
     try {
-      const response = await axios.post("http://localhost:5000/start", {
-        activity,
-      });
+      const response = await axios.post(
+        "https://command-based-tracking.vercel.app/start",
+        {
+          activity,
+        }
+      );
       setCurrentActivity(response.data);
       setMessage("Activity started: " + activity);
       console.log("Started activity:", response.data);
@@ -103,9 +108,12 @@ const App = () => {
     );
     if (currentActivityRef.current) {
       try {
-        const response = await axios.post("http://localhost:5000/stop", {
-          id: currentActivityRef.current._id,
-        });
+        const response = await axios.post(
+          "https://command-based-tracking.vercel.app/stop",
+          {
+            id: currentActivityRef.current._id,
+          }
+        );
         setMessage("Activity stopped");
         console.log("Stopped activity:", response.data);
         fetchActivities();
