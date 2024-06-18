@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://command-based-tracking.vercel.app"],
+    origin: ["http://command-based-tracking.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
